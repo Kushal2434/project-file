@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Submit News - DarkNews Portal</title>
+  <style>
+    /* Basic Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 0 15px;
+      width: 100%;
+    }
+
+    /* Header */
+    .site-header {
+      background-color: #1f1f1f;
+      padding: 15px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.7);
+    }
+
+    .header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      color: #bb86fc;
+    }
+
+    .main-nav a {
+      color: #e0e0e0;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+      color: #bb86fc;
+    }
+
+    /* Main Content */
+    main {
+      flex-grow: 1;
+      padding: 30px 0;
+    }
+
+    .submit-news-section h2 {
+      margin-bottom: 25px;
+      color: #bb86fc;
+      text-align: center;
+      font-size: 2rem;
+    }
+
+    .news-form {
+      background-color: #222;
+      padding: 25px 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(187, 134, 252, 0.5);
+    }
+
+    .news-form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #ccc;
+    }
+
+    .news-form input[type="text"],
+    .news-form input[type="date"],
+    .news-form textarea {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #333;
+      color: #eee;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+      resize: vertical;
+    }
+
+    .news-form input[type="text"]:focus,
+    .news-form input[type="date"]:focus,
+    .news-form textarea:focus {
+      outline: none;
+      background-color: #444;
+    }
+
+    .news-form button {
+      display: block;
+      width: 100%;
+      background-color: #bb86fc;
+      color: #121212;
+      font-weight: 700;
+      padding: 14px 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .news-form button:hover {
+      background-color: #9a68e0;
+    }
+
+    /* Footer */
+    .site-footer {
+      background-color: #1f1f1f;
+      color: #777;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 0.9rem;
+      margin-top: auto;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.7);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .header-flex {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .main-nav a {
+        margin-left: 0;
+        margin-right: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-flex">
+      <h1 class="logo">📰 Global Times</h1>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="add-news.html" class="active">Submit News</a>
+        <a href="admin.html">Admin</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="submit-news-section">
+      <h2>Submit Your News</h2>
+      <form id="newsForm" action="submit-success.html" method="GET" class="news-form">
+        <label for="title">News Title</label>
+        <input type="text" id="title" name="title" placeholder="Enter the news title" required />
+
+        <label for="author">Author Name</label>
+        <input type="text" id="author" name="author" placeholder="Your name" required />
+
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" required />
+
+        <label for="content">News Content</label>
+        <textarea id="content" name="content" rows="6" placeholder="Write your news content here..." required></textarea>
+
+        <button type="submit">Submit News</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 DarkNews. All Rights Reserved.</p>
+    </div>
+  </footer>'
+  
+  
+  <script>
+  document.getElementById('newsForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const date = document.getElementById('date').value;
+    const content = document.getElementById('content').value;
+
+    const newArticle = {
+      id: Date.now(), // Unique ID
+      title,
+      author,
+      date,
+      content,
+      approved: false
+    };
+
+    const existing = JSON.parse(localStorage.getItem('newsArticles') || '[]');
+    existing.push(newArticle);
+    localStorage.setItem('newsArticles', JSON.stringify(existing));
+
+    alert("News submitted! It will appear in the Admin Panel for approval.");
+    window.location.href = "submit-success.html";
+  });
+</script>
+
+</body>
+</html>

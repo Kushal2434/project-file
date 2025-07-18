@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Submission Successful - DarkNews Portal</title>
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 0 15px;
+      width: 100%;
+    }
+    /* Header */
+    .site-header {
+      background-color: #1f1f1f;
+      padding: 15px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.7);
+    }
+    .header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.8rem;
+      color: #bb86fc;
+    }
+    .main-nav a {
+      color: #e0e0e0;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    .main-nav a:hover,
+    .main-nav a.active {
+      color: #bb86fc;
+    }
+    /* Main */
+    main.success-message {
+      flex-grow: 1;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    main.success-message h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #bb86fc;
+    }
+    main.success-message p {
+      font-size: 1.2rem;
+      margin-bottom: 35px;
+      color: #ccc;
+    }
+    a.btn {
+      display: inline-block;
+      background-color: #bb86fc;
+      color: #121212;
+      font-weight: 700;
+      padding: 14px 40px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: background-color 0.3s ease;
+    }
+    a.btn:hover {
+      background-color: #9a68e0;
+    }
+    /* Footer */
+    .site-footer {
+      background-color: #1f1f1f;
+      color: #777;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 0.9rem;
+      margin-top: auto;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.7);
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      .header-flex {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .main-nav a {
+        margin-left: 0;
+        margin-right: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-flex">
+      <h1 class="logo">📰 Global Times</h1>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="add-news.html">Submit News</a>
+        <a href="admin.html">Admin</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container success-message">
+    <h2>Thank you for your submission!</h2>
+    <p>Your news article has been received and is pending review.</p>
+    <a href="index.html" class="btn">Back to Home</a>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 DarkNews. All Rights Reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
